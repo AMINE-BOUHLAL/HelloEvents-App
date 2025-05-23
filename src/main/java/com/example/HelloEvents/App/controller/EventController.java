@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/event")
 public class EventController {
     private final EventService eventService;
 
     public EventController(EventService eventService) { this.eventService = eventService;}
 
     @GetMapping("/GET")
-    public List<Event> getEvents() { return eventService.getEvents(); }
+    public List<EventDTO> getEvents() { return eventService.getEvents(); }
 
     @PostMapping("/POST")
     public EventDTO addEvent(@RequestBody EventDTO eventDTO) {

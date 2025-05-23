@@ -21,14 +21,18 @@ public class EventService {
 
 
 
-    
+
 
 
     public void deleteEvent(Long id) {
         eventRepository.deleteById(id);
     }
 
-    public List<Event> getEvents() {return eventRepository.findAll();}
+    public List<EventDTO> getEvents() {
+        return eventRepository.findAll().stream()
+                .map(event -> eventMapper.eventToDto(event))
+                .toList();
+    }
 
     public EventDTO AddEvent(EventDTO eventDTO){
         var event = eventMapper.dtoToEvent(eventDTO);
