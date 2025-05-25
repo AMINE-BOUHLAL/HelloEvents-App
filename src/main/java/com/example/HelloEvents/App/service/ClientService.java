@@ -17,8 +17,10 @@ public class ClientService {
 
 
 
-    public List<Client> getClients() {
-        return clientRepository.findAll();
+    public List<ClientDTO> getClients() {
+        return clientRepository.findAll().stream()
+        .map(client -> clientMapper.clientToDto(client))
+                .toList();
     }
 
 
@@ -38,20 +40,32 @@ public class ClientService {
         return clientMapper.clientToDto(clientRepository.save(client));
     }
 
-//    public ClientDTO getClientsById(Long id) {
-//        return clientRepository.findById(id)
-//                .map(client -> ClientMapper.(client))
-//                .orElse(null);
-//
-//    }
-
-    public ClientDTO updateClient(Long id , ClientDTO clientDTO) {
-        Client client = (Client) clientRepository.findById(id).get();
-        client.setName(clientDTO.getName());
-        client.setEmail(clientDTO.getEmail());
-        client.setPassword(clientDTO.getPassword());
-        return clientMapper.clientToDto(clientRepository.save(client));
-
+    public ClientDTO UpdateClient(Long id,ClientDTO clientDTO){
+    Client client = clientRepository.findById(id).get();
+    client.setName(clientDTO.getName());
+    client.setEmail(clientDTO.getEmail());
+    client.setRole(clientDTO.getRole());
+    client.setPassword(clientDTO.getPassword());
+    return clientMapper.clientToDto(clientRepository.save(client));
 
     }
+
+
+
+    public ClientDTO getClientById(Long id) {
+        return clientRepository.findById(id)
+                .map(client -> clientMapper.clientToDto(client))
+                .orElse(null);
+
+    }
+
+//    public ClientDTO updateClient(Long id , ClientDTO clientDTO) {
+//        Client client = (Client) clientRepository.findById(id).get();
+//        client.setName(clientDTO.getName());
+//        client.setEmail(clientDTO.getEmail());
+//        client.setPassword(clientDTO.getPassword());
+//        return clientMapper.clientToDto(clientRepository.save(client));
+//
+//
+//    }
 }

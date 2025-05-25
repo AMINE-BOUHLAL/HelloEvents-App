@@ -3,42 +3,44 @@ package com.example.HelloEvents.App.controller;
 import com.example.HelloEvents.App.DTO.ClientDTO;
 import com.example.HelloEvents.App.model.Client;
 import com.example.HelloEvents.App.service.ClientService;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@AllArgsConstructor
 @RestController
-@RequestMapping("/client")
+@RequestMapping("/Client")
+
 public class ClientController {
     private final ClientService clientService;
 
-    public ClientController(ClientService clientService) {
-        this.clientService = clientService;
-    }
-    @GetMapping("/GET")
-    public List<Client> getClients() {
+
+    @GetMapping("/")
+    public List<ClientDTO> getClients() {
         return clientService.getClients(); }
 
-//    @PostMapping("/POST")
-//    public UserDTO addUser(@RequestBody UserDTO UserDTO) {
-//        return UserService.AddUser(userDTO); }
+    @PostMapping("/")
+    public ClientDTO AddClient(ClientDTO clientDTO) {
+        return clientService.AddClient(clientDTO);
+    }
+
+    @PutMapping("/{id}")
+    public ClientDTO UpdateClient(@PathVariable Long id,ClientDTO clientDTO) {
+        return clientService.UpdateClient(id,clientDTO);
+    }
 //
 //    @GetMapping("/ID/{id}")
-//    public UserDTO getUsersById(@PathVariable Long id){
-//        return  UserService.getUsersById(id);
+//    public ClientDTO getClientById(@PathVariable Long id){
+//        return  ClientService.getClientById(id);
 //    }
 //
-//    @DeleteMapping("/DEL/{id}")
-//    public void deleteUser(@PathVariable Long id) {
-//        UserService.deleteUser(id);
-//    }
-//
-//    @PutMapping("/PUT/{id}")
-//    public UserDTO updateUser(@PathVariable Long id,@RequestBody UserDTO userDTO){
-//        return UserService.updateUser(id,userDTO);
-//    }
-//
-//
+    @DeleteMapping("/DEL/{id}")
+    public void deleteClient(@PathVariable Long id) {
+        ClientService.deleteClient(id);
+    }
+
+
 
 
 }
