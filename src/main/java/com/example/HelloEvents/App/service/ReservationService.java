@@ -23,12 +23,12 @@ public class ReservationService {
 
 
     @Transactional
-    public ReservationDTO Resrever(ReservationDTO reservatioDto){
-        var client = clientRepository.findById(reservatioDto.getClientid()).orElse(null);
-        var event = eventRepository.findById(reservatioDto.getEventId()).orElse(null);
+    public ReservationDTO Reserver(ReservationDTO reservationDTO){
+        var client = clientRepository.findById(reservationDTO.getClientId()).orElse(null);
+        var event = eventRepository.findById(reservationDTO.getEventId()).orElse(null);
 
         var res = reservationRepository.save(new Reservation(null,client,event));
-        return new ReservationDTO(res.getIdreservation(), res.getClient().getId(), res.getEvenement().getIdEvent());
+        return new ReservationDTO(res.getIdreservation(), res.getClient().getId(), res.getEvent().getId());
     }
 
     public List<ReservationDTO> getAllReservation(){

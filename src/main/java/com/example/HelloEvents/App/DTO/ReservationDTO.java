@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ReservationDTO {
     private Long idReservation;
-    private Long Elientid;
+    private Long ClientId;
     private Long EventId;
 
 }

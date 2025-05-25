@@ -19,7 +19,7 @@ public class ReservationController {
 
         @PostMapping("/addReservation")
         public ReservationService addReservation(@RequestBody ReservationDTO reservationDTO){
-            return reservationService.Resrever(reservationDTO);
+            return reservationService.Reserver(reservationDTO);
         }
 
         @GetMapping("/allReservations")
@@ -28,7 +28,7 @@ public class ReservationController {
         }
 
         @GetMapping("/reservation/{id}")
-        public ReservationDTO getreservationById(@PathVariable Long id ){
+        public ReservationDTO getReservationById(@PathVariable Long id ){
             return reservationService.getReservationById(id);
         }
     }
