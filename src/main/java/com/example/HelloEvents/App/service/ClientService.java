@@ -23,16 +23,9 @@ public class ClientService {
                 .toList();
     }
 
-
-
-
-
-
-    public void deleteEvent(Long id) {
+    public void deleteClient(Long id) {
         clientRepository.deleteById(id);
     }
-
-
 
     public ClientDTO AddClient(ClientDTO clientDTO){
         var client = clientMapper.dtoToclient(clientDTO);
@@ -50,8 +43,6 @@ public class ClientService {
 
     }
 
-
-
     public ClientDTO getClientById(Long id) {
         return clientRepository.findById(id)
                 .map(client -> clientMapper.clientToDto(client))
@@ -59,13 +50,5 @@ public class ClientService {
 
     }
 
-//    public ClientDTO updateClient(Long id , ClientDTO clientDTO) {
-//        Client client = (Client) clientRepository.findById(id).get();
-//        client.setName(clientDTO.getName());
-//        client.setEmail(clientDTO.getEmail());
-//        client.setPassword(clientDTO.getPassword());
-//        return clientMapper.clientToDto(clientRepository.save(client));
-//
-//
-//    }
+
 }

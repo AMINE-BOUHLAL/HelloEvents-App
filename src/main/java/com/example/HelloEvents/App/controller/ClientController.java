@@ -29,15 +29,15 @@ public class ClientController {
     public ClientDTO UpdateClient(@PathVariable Long id,ClientDTO clientDTO) {
         return clientService.UpdateClient(id,clientDTO);
     }
-//
-//    @GetMapping("/ID/{id}")
-//    public ClientDTO getClientById(@PathVariable Long id){
-//        return  ClientService.getClientById(id);
-//    }
-//
-    @DeleteMapping("/DEL/{id}")
+
+    @GetMapping("/{id}")
+    public ClientDTO getClientById(@PathVariable Long id){
+        return  clientService.getClientById(id);
+    }
+
+    @DeleteMapping("/{id}")
     public void deleteClient(@PathVariable Long id) {
-        ClientService.deleteClient(id);
+        clientService.deleteClient(id);
     }
 
 
