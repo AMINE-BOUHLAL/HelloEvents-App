@@ -21,7 +21,7 @@ public class ClientController {
         return clientService.getClients(); }
 
     @PostMapping("/")
-    public ClientDTO AddClient(ClientDTO clientDTO) {
+    public ClientDTO AddClient(@RequestBody ClientDTO clientDTO) {
         return clientService.AddClient(clientDTO);
     }
 

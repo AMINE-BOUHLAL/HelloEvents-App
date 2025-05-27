@@ -28,9 +28,7 @@ public class ClientService {
     }
 
     public ClientDTO AddClient(ClientDTO clientDTO){
-        var client = clientMapper.dtoToclient(clientDTO);
-        client.setId(null);
-        return clientMapper.clientToDto(clientRepository.save(client));
+       return clientMapper.clientToDto(clientRepository.save(clientMapper.dtoToclient(clientDTO)));
     }
 
     public ClientDTO UpdateClient(Long id,ClientDTO clientDTO){

@@ -3,13 +3,11 @@ package com.example.HelloEvents.App.DTO;
 import com.example.HelloEvents.App.model.Role;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Getter           //getters and setters
+@Getter
 @Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 //@BUILDER pour les objects

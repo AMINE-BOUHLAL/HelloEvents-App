@@ -9,5 +9,5 @@ import org.mapstruct.ReportingPolicy;
 public interface EventMapper {
 
     EventDTO eventToDto(Event event);
-    Event dtoToEvent(EventDTO eventDto);
+    Event dtoToEvent(EventDTO eventDTO);
 }
